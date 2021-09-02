@@ -20,20 +20,35 @@
 
 // Нельзя использовать никакие готовые решения, а также библиотеки для перемещения объектов. Только чистый JS и css при необходимости
 
-const form = document.forms['form'];
-const text = form.elements['text'];
+const form = document.forms.form;
+const text = form.elements.text;
 const list = document.querySelector('.list');
 
-form.addEventListener("submit", (evt) =>{
+form.addEventListener("submit", (evt) => {
     evt.preventDefault();
 
-    const valueText = text.value;
-
     const newEl = document.createElement('li')
-    newEl.textContent = valueText
+    newEl.textContent = text.value;
 
     list.append(newEl)
 
+
+
     form.reset()
 
+
 })
+
+text.onchange = function () {
+    let string = text.value
+    for (let i = 0; i < string.length; i++) {
+        let element = string[i];
+
+        element.onclick = function () {
+
+        }
+        
+    }
+
+
+}
