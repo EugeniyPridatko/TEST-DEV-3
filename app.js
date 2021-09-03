@@ -32,23 +32,40 @@ form.addEventListener("submit", (evt) => {
 
     list.append(newEl)
 
-
-
     form.reset()
-
-
 })
 
-text.onchange = function () {
-    let string = text.value
-    for (let i = 0; i < string.length; i++) {
-        let element = string[i];
+// text.onchange = function () {
+//     let string = text.value
+//     for (let i = 0; i < string.length-1; i++) {
+//         let element = string[i];
 
-        element.onclick = function () {
+//         element.onclick = checkClick
+//     }
+// }
 
-        }
+// function checkClick() {}
+
+
+
+// const element = document.querySelector('.container')
+
+list.addEventListener('mousedown', (event) => {
+
+    document.addEventListener('mousemove', onMouseMove);
+
+    function onMouseMove(event) {
+
+        list.style.left = event.pageX - list.offsetWidth / 2 + 'px';
+        list.style.top = event.pageY - list.offsetHeight / 2 + 'px';
         
     }
 
+    list.addEventListener('mouseup', onMouseUp);
 
-}
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        list.removeEventListener('mouseup', onMouseUp)
+    }
+});
+
